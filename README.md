@@ -24,3 +24,8 @@ python课程作业
 - [ ] 数据存储
 - [ ] 数据查询
 - [ ] 测试与文档完善
+
+
+安装依赖：pip install -r requirements.txt
+
+运行：python src/main.py
