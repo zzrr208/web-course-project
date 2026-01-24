@@ -5,3 +5,29 @@ from typing import Iterable, Dict, Any, Tuple
 
 DB_PATH = "films.db"
 JSON_PATH = "films_2000_2024.json"
+
+def export_to_csv(db_path: str = DB_PATH, csv_path: str = CSV_PATH) -> None:
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+
+    rows = cur.execute(
+        """
+        SELECT title, year, source, url
+        FROM films
+        ORDER BY year ASC, title ASC
+        """
+    ).fetchall()
+
+    with open(csv_path, "w", newline="", encoding="utf-8-sig") as f:
+        writer = csv.writer(f)
+        # 表头
+        writer.writerow(["title", "year", "source", "url"])
+        # 数据行
+        writer.writerows(rows)
+
+    conn.close()
+    print(f"Exported {len(rows)} rows to {csv_path}")
+
+
+if __name__ == "__main__":
+    export_to_csv()
