@@ -53,3 +53,14 @@ web-course-project/
 ├── README.md # 项目说明文档
 ├── requirements.txt # 项目依赖
 └── .gitignore # Git 忽略文件
+
+## 测试说明
+
+项目使用 pytest 进行基础功能测试，覆盖：
+- 数据库文件与表结构
+- 数据是否成功入库
+- 按年份查询功能
+
+运行测试：
+```bash
+pytest -q
